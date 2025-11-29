@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.new_project"
+    namespace = "com.example.faithflow_islam"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
