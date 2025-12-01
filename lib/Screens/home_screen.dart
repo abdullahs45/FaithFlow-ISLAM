@@ -279,7 +279,9 @@ class HomePage extends StatelessWidget {
                 controller.upcomingPrayer.value,
                 Icons.mosque,
                 Colors.green,
-                () {},
+                () {
+                  _showUpcomingPrayerDialog(context);
+                },
               ),
             ),
             const SizedBox(height: 12),
@@ -466,6 +468,36 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showUpcomingPrayerDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Upcoming Prayer Time"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children:
+              Get.find<HomeController>().upcomingPrayer.value.split(', ').map((
+                entry,
+              ) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(entry),
+                );
+              }).toList(),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("Close"),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 class CustomSearchDelegate extends SearchDelegate {
