@@ -29,7 +29,7 @@ A full-stack Islamic mobile app built with Flutter, featuring both frontend and 
 
 ## Screenshots
 
-### Home Screen (Prayer Times & Calenda) 
+### Home Screen (Prayer Times & Calender) 
 ![Home Screen](assets/screenshots/home.jpg)
 ### Tasbeeh Counter
 ![Tasbeeh Counter](assets/screenshots/tasbeeh.jpg)
