@@ -31,17 +31,6 @@ class SplashScreen extends StatelessWidget {
           height: double.maxFinite,
           fit: BoxFit.cover,
         ),
-
-        // Text(
-        //   'FaithFlow ISLAM',
-        //   style: TextStyle(
-        //     fontSize: 28,
-        //     fontWeight: FontWeight.bold,
-        //     color: Colors.white,
-        //     letterSpacing: 1.2,
-        //   ),
-        //   textAlign: TextAlign.center,
-        // ),
       ),
     );
   }

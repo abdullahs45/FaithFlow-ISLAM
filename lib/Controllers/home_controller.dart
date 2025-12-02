@@ -10,7 +10,6 @@ class HomeController extends GetxController {
   var hijriDateShort = ''.obs;
   var upcomingPrayer = 'Calculating...'.obs;
 
-  // TODO: Replace with user location or connect to GPS/settings
   static const double _defaultLatitude = 24.8607; // Karachi
   static const double _defaultLongitude = 67.0011;
 
@@ -89,20 +88,20 @@ class HomeController extends GetxController {
       }
     }
 
-    // If all prayers for today passed, wrap to tomorrow's Fajr
     if (nextPrayer == null) {
       final tomorrow = now.add(const Duration(days: 1));
       final tomorrowComponents = adhan.DateComponents.from(tomorrow);
       final tomorrowPrayerTimes = adhan.PrayerTimes(
-            coordinates,
-            tomorrowComponents,
-            params,
-          ),
-          nextPrayer = adhan.Prayer.fajr;
+        coordinates,
+        tomorrowComponents,
+        params,
+      );
+
+      nextPrayer = adhan.Prayer.fajr;
       nextPrayerTime = tomorrowPrayerTimes.fajr;
     }
 
-    final label = _prayerLabel(nextPrayer!);
+    final label = _prayerLabel(nextPrayer);
     final timeString = DateFormat('hh:mm a').format(nextPrayerTime!);
 
     upcomingPrayer.value = '$label · $timeString';

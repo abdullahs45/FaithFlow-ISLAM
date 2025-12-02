@@ -1,48 +1,10 @@
+import 'package:faithflow_islam/Widgets/Lists/ibadat_list.dart' as ibadat_Map;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'tasbeeh_screen.dart';
 
 class IbadatScreen extends StatelessWidget {
   const IbadatScreen({super.key});
-
-  final List<Map<String, dynamic>> ibadatItems = const [
-    {
-      'title': 'Prayer (Salah)',
-      'subtitle': 'How to perform Salah',
-      'icon': Icons.handshake,
-      'color': Colors.green,
-    },
-    {
-      'title': 'Fasting (Sawm)',
-      'subtitle': 'Guidelines for fasting',
-      'icon': Icons.wb_sunny,
-      'color': Colors.orange,
-    },
-    {
-      'title': 'Hajj',
-      'subtitle': 'Pilgrimage to Makkah',
-      'icon': Icons.temple_hindu,
-      'color': Colors.blue,
-    },
-    {
-      'title': 'Umrah',
-      'subtitle': 'Lesser pilgrimage',
-      'icon': Icons.location_city,
-      'color': Colors.purple,
-    },
-    {
-      'title': 'Nimaaz e Jinaza',
-      'subtitle': 'Funeral prayer',
-      'icon': Icons.church,
-      'color': Colors.grey,
-    },
-    {
-      'title': 'Tasbeeh',
-      'subtitle': 'Dhikr counter',
-      'icon': Icons.add_circle,
-      'color': Colors.teal,
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +16,9 @@ class IbadatScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: ibadatItems.length,
+        itemCount: ibadat_Map.ibadatItems.length,
         itemBuilder: (context, index) {
-          final item = ibadatItems[index];
+          final item = ibadat_Map.ibadatItems[index];
           return Card(
             margin: const EdgeInsets.only(bottom: 12),
             elevation: 4,

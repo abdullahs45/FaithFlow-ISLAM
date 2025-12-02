@@ -1,4 +1,7 @@
 import 'package:faithflow_islam/Controllers/profile_controller.dart';
+import 'package:faithflow_islam/Screens/edit_profile_screen.dart';
+import 'package:faithflow_islam/Widgets/menu_item_widget.dart';
+import 'package:faithflow_islam/Widgets/stat_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Obx(
-                    () => _buildStatCard(
+                    () => statCardWidget(
                       'Total Readings',
                       controller.totalreadings.value.toString(),
                       Icons.book,
@@ -87,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Obx(
-                    () => _buildStatCard(
+                    () => statCardWidget(
                       'Days Active',
                       controller.daysActive.value.toString(),
                       Icons.calendar_today,
@@ -95,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  _buildMenuItem('Settings', Icons.settings, () async {
+                  menuItemWidget('Settings', Icons.settings, () async {
                     // Example: Save user data to SharedPreferences
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.setString(
@@ -119,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                       colorText: Colors.green.shade900,
                     );
                   }),
-                  _buildMenuItem('About', Icons.info, () {
+                  menuItemWidget('About', Icons.info, () {
                     Get.dialog(
                       AlertDialog(
                         title: const Text('About'),
@@ -133,160 +136,9 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     );
                   }),
-                  _buildMenuItem('Help & Support', Icons.help, () {}),
+                  menuItemWidget('Help & Support', Icons.help, () {}),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatCard(
-    String title,
-    String value,
-    IconData icon,
-    Color color,
-  ) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [color.withOpacity(0.5), color.withOpacity(0.1)],
-          ),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(icon, color: Colors.white, size: 28),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    value,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: color.withOpacity(0.9),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuItem(String title, IconData icon, VoidCallback onTap) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        leading: Icon(icon, color: Colors.green.shade700),
-        title: Text(title),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
-      ),
-    );
-  }
-}
-
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
-
-  @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-class _EditProfileScreenState extends State<EditProfileScreen> {
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  final ProfileController controller = Get.find();
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController(text: controller.userName.value);
-    _emailController = TextEditingController(text: controller.email.value);
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Profile'),
-        backgroundColor: Colors.green.shade700,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () async {
-                await controller.updateProfile(
-                  _nameController.text,
-                  _emailController.text,
-                );
-                Get.back();
-                Get.snackbar(
-                  'Success',
-                  'Profile updated successfully',
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: Colors.green.shade100,
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green.shade700,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 15,
-                ),
-              ),
-              child: const Text('Save'),
             ),
           ],
         ),

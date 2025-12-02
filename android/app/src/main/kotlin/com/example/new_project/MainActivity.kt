@@ -1,4 +1,4 @@
-package com.example.new_project
+package com.example.faithflow_islam
 
 import io.flutter.embedding.android.FlutterActivity
 
