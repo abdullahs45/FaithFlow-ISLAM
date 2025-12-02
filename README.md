@@ -29,21 +29,21 @@ A full-stack Islamic mobile app built with Flutter, featuring both frontend and 
 ## Screenshots
 
 ### Home Screen (Prayer Times & Calenda) 
-![Home Screen](assets/screenshots/home.png)
+![Home Screen](assets/screenshots/home.jpg)
 ### Tasbeeh Counter
-![Tasbeeh Counter](assets/screenshots/tasbeeh.png)
+![Tasbeeh Counter](assets/screenshots/tasbeeh.jpg)
 ### Quran Details
-![Quran Details](assets/screenshots/quran_surah.png)
-![Quran Details](assets/screenshots/quran_parah.png)
-![Quran Details](assets/screenshots/quran_favourite.png)
+![Quran Details](assets/screenshots/quran_surah.jpg)
+![Quran Details](assets/screenshots/quran_parah.jpg)
+![Quran Details](assets/screenshots/quran_favourite.jpg)
 ### Hadith Details 
-![Hadith Details](assets/screenshots/hadith.png)
+![Hadith Details](assets/screenshots/hadith.jpg)
 ### Profile
-![Profile](assets/screenshots/profile.png)
+![Profile](assets/screenshots/profile.jpg)
 ### Edit Profile 
-![Edit Profile](assets/screenshots/editProfile.png)
+![Edit Profile](assets/screenshots/editProfile.jpg)
 ### Ibadat
-![Ibadat](assets/screenshots/ibadat.png)
+![Ibadat](assets/screenshots/ibadat.jpg)
 
 ## Installation
 1. Clone the repo
