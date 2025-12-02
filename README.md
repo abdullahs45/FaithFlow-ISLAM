@@ -1,6 +1,5 @@
 # FaithFlow_Islam
 
-A new Flutter project.
 A full-stack Islamic mobile app built with Flutter, featuring both frontend and basic backend functionality. Designed as a personal self-learning project.
 
 ## Features
